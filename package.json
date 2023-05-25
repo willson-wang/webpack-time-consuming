@@ -6,10 +6,10 @@
   "description": "a react project build by webpack",
   "homepage": "https://willson-wang.github.io/webpack-time-consuming",
   "scripts": {
-    "build": "rm -rf dist && webpack -c ./config/webpack.config.js",
-    "build:swc": "rm -rf dist && cross-env TRANSFORM=swc MINI=swc webpack -c ./config/webpack.config.js",
-    "build:esbuild": "rm -rf dist && cross-env TRANSFORM=esbuild MINI=esbuild webpack -c ./config/webpack.config.js",
-    "build:swc:esbuild": "rm -rf dist && cross-env TRANSFORM=swc MINI=esbuild webpack -c ./config/webpack.config.js"
+    "build": "webpack -c ./config/webpack.config.js",
+    "build:speed": "cross-env SPEED_MEASURE=1 webpack -c ./config/webpack.config.js",
+    "build:profile": "cross-env PROFILE=1 webpack -c ./config/webpack.config.js",
+    "build:stats": "cross-env STATS_LOGGER=1 webpack -c ./config/webpack.config.js"
   },
   "browserslist": [
     "last 3 major versions",
@@ -41,6 +41,7 @@
     "mini-css-extract-plugin": "^2.7.5",
     "postcss": "^8.4.21",
     "postcss-loader": "^7.2.4",
+    "speed-measure-webpack-plugin": "^1.5.0",
     "style-loader": "^3.3.2",
     "typescript": "^4.3.4",
     "webpack": "^5.79.0",

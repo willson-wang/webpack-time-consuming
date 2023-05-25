@@ -17,7 +17,7 @@ jobs:
         run: |
           npm install pnpm -g
           pnpm install
-          pnpm run build:swc:esbuild
+          pnpm run build:speed
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4

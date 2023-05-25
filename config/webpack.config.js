@@ -7,7 +7,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
-module.exports = {
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+
+const smp = new SpeedMeasurePlugin();
+
+const config = {
   mode: 'production',
   devtool: 'source-map',
   cache: {
@@ -186,13 +190,7 @@ module.exports = {
     new ProgressPlugin(
       {
         percentBy: 'entries',
-        profile: false
-      }
-    ),
-    new MiniCssExtractPlugin(
-      {
-        filename: 'css/[name].[contenthash].css',
-        chunkFilename: 'css/[name].[contenthash].css'
+        profile: !!process.env.PROFILE
       }
     ),
     new HtmlWebpackPlugin(
@@ -212,5 +210,31 @@ module.exports = {
   ],
   entry: {
     app: path.join(__dirname, '../src/app')
+  },
+}
+
+if (process.env.PROFILE_DETAIL) {
+  config.infrastructureLogging = {
+    level: 'verbose',
+    debug: true
   }
 }
+
+if (process.env.STATS_LOGGER) {
+  config.stats = {
+    logging: 'verbose',
+  }
+}
+
+const lastCofig = process.env.SPEED_MEASURE ? smp.wrap(config) : config
+
+// MiniCssExtractPlugin不能与SpeedMeasurePlugin一起使用，不然会抛错
+config.plugins.push(new MiniCssExtractPlugin(
+  {
+    filename: 'css/[name].[contenthash].css',
+    chunkFilename: 'css/[name].[contenthash].css'
+  }
+))
+
+
+module.exports = lastCofig

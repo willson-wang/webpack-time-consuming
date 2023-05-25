@@ -66,8 +66,15 @@ git clone git@github.com:willson-wang/swc-esbuild.git
 pnpm install
  
 ### 构建模式
- 
+
+正常构建 
 pnpm build
 
-可以通过环境变量`TRANSFORM`与`MINI`控制代码转换与代码压缩的方式
+开启loader与plugin耗时统计
+pnpm build:speed
 
+开启打印webpack各个流程耗时
+pnpm build:profile
+
+开启打印webpack 各个hook耗时
+pnpm build:stats
