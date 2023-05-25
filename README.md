@@ -1,6 +1,6 @@
 ## 简介（Introduction)
 
-webpack耗时统计与分析项目
+webpack耗时统计与分析demo项目
 
 ## 技术栈（Scheme）
 
@@ -67,14 +67,22 @@ pnpm install
  
 ### 构建模式
 
-正常构建 
+正常构建
+```
 pnpm build
+```
 
 开启loader与plugin耗时统计
+```
 pnpm build:speed
+```
 
 开启打印webpack各个流程耗时
+```
 pnpm build:profile
+```
 
 开启打印webpack 各个hook耗时
+```
 pnpm build:stats
+```
