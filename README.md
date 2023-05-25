@@ -1,10 +1,10 @@
 ## 简介（Introduction)
 
-react demo 项目
+webpack耗时统计与分析项目
 
 ## 技术栈（Scheme）
 
-react + typescript + webpack5 + less + swc + esbuild
+react + typescript + webpack5 + less
 
 ## 项目设计结构
 
@@ -59,7 +59,7 @@ react + typescript + webpack5 + less + swc + esbuild
 
 ### 克隆仓库
  
-git clone git@github.com:willson-wang/swc-esbuild.git
+git clone git@github.com:willson-wang/webpack-time-consuming.git
  
 ### 安装依赖
  
