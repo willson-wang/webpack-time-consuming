@@ -12,7 +12,7 @@ const render = () => {
   const rootElement = document.getElementById('app');
   const App: React.FC = () => (
     // @ts-ignore
-    <Router basename='/swc-esbuild/'>
+    <Router basename='/webpack-time-consuming/'>
       <Switch>
         {routes.map((route, i) => (
           <RouteWithSubRoutes key={i} {...route} />
